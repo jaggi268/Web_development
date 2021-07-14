@@ -1,0 +1,24 @@
+body
+{
+    background-color: #eaf6f6;
+}
+hr:hover
+{
+    border-style: none;
+    border-top-style: dotted;
+    border-color: grey;
+    border-width: 3px;
+    width: 5%;
+}
+img:hover
+{
+    border-radius: 50%;
+}
+h2,h3
+{
+    color: #66bfbf;
+}
+h1
+{
+    color:#a03e67
+}
