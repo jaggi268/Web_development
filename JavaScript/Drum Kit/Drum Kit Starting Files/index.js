@@ -8,11 +8,14 @@ for(var i=0;i<document.querySelectorAll(".drum").length;i++)
     {
         var buttonInnerHtml = this.innerHTML;
         makeSound(buttonInnerHtml);
+        style(buttonInnerHtml);
     });
+    
 }
 document.addEventListener("keydown",function(event)
 {
     makeSound(event.key);
+    style(event.key);
 }
 )
 ;
@@ -52,4 +55,9 @@ function makeSound(key)
             console.log(key);
             break;
         }
+}
+function style(event)
+{   
+    document.querySelector("."+event).classList.add("pressed");
+    setTimeout(function(){document.querySelector("."+event).classList.remove("pressed")}, 100);
 }
