@@ -57,15 +57,9 @@ function makeSound(key)
         }
 }
 function style(event)
-<<<<<<< HEAD
 {   
     document.querySelector("."+event).classList.add("pressed");
     setTimeout(function(){document.querySelector("."+event).classList.remove("pressed")}, 100);
 }
-=======
-{
-    setTimeout(document.querySelector("."+event).classList.add("pressed");, 3000);
-    document.querySelector("."+event).classList.remove("pressed");
-    
-}
->>>>>>> 54c865882686d91e1a907481d334a61ddd7ae227
+
+
