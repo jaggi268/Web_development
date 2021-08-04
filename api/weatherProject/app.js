@@ -5,6 +5,7 @@ const express = require("express");
 const {
     write
 } = require("fs");
+require('dotenv').config()
 const https = require("https");
 const app = express();
 app.use(express.urlencoded({
@@ -15,7 +16,8 @@ app.get("/", function (req, res) {
 })
 app.post("/", function (req, res) {
     const cityName = req.body.cityName;
-    const url = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=e8c843ea3b3daa85462cbecaff3d86ff&units=metric";
+    const api = process.env.API_KEY
+    const url = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid="+api+"&units=metric";
     https.get(url, function (response) {
         res.sendFile(__dirname + "/index.html");
         response.on("data", function (data) {
