@@ -2,6 +2,7 @@ const { json } = require("express");
 const express = require("express");
 const request = require("request");
 const https = require("https");
+require('dotenv').config()
 
 const app = express();
 app.use(express.urlencoded({extended:true}));
@@ -30,7 +31,7 @@ app.post("/",function(req,res)
     const url = "https://us5.api.mailchimp.com/3.0/lists/dc3e1b5184"
     const options = {
         method:"POST",
-        auth:"jagadeesh:68b6a30ebaa2c15d94d81d7715464821-us5"
+        auth:"jagadeesh:"+process.env.API_KEY+""
     }
     const request = https.request(url,options,function(response)
     {
@@ -39,10 +40,10 @@ app.post("/",function(req,res)
             console.log(JSON.parse(data));
         })
         if (response.statusCode===200) {
-            res.sendFile(__dirname+"/success.html")
+            res.sendFile(__dirname+"/success.html");
         }
         else{
-            res.sendFile(__dirname+"/failure.html")
+            res.sendFile(__dirname+"/failure.html");
         }
     })
     request.write(jsonData);
@@ -50,7 +51,7 @@ app.post("/",function(req,res)
 })
 app.post("/failure",function(req,res)
 {
-    res.sendFile(__dirname+"/signup.html")
+    res.sendFile(__dirname+"/signup.html");
 })
 app.listen(process.env.PORT || 3000,function()
 {
